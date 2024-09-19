@@ -1,6 +1,7 @@
 import "./HomePage.css";
 
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 const HomePage: FC = () => {
   return (
@@ -8,7 +9,9 @@ const HomePage: FC = () => {
       <div className="bg-container">
         <div className="heading">
           <h1>Welcome to Official Pokédemon Fan Page</h1>
-          <button>View Pokédemon</button>
+          <Link to="/us/pokedex">
+            <button>View Pokédemon</button>
+          </Link>
         </div>
       </div>
     </div>
