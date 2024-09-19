@@ -1,0 +1,83 @@
+/* Default styles */
+.homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+  /* border: 20px solid lightgray; */
+  border: 20px solid rgba(62, 248, 248, 0.7);
+}
+
+.bg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  width: 95vw;
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/677/922/425/pokemon-pokemon-red-and-blue-blastoise-pokemon-bulbasaur-pokemon-wallpaper-preview.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 25% 75%;
+}
+
+.bg-container .heading {
+  height: 150px;
+  margin-bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bg-container .heading h1 {
+  font-weight: 900;
+}
+
+.bg-container .heading button {
+  height: 60px;
+  width: 200px;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(62, 248, 248);
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  font-size: 1.2rem;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.bg-container .heading button:hover {
+  opacity: 1;
+}
+
+/* Media Query */
+@media (min-width: 768px) {
+  .bg-container .heading {
+    margin-bottom: 500px;
+  }
+
+  .bg-container .heading h1 {
+    font-weight: 900;
+  }
+}
+
+@media (min-width: 1080px) {
+  .homepage {
+    color: white;
+  }
+  .bg-container {
+    background-position: center;
+  }
+
+  .bg-container .heading {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+}
