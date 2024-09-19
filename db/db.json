@@ -1,0 +1,136 @@
+{
+  "pokemon": [
+    {
+      "id": "1",
+      "name": "Bulbasaur",
+      "type": ["Grass", "Poison"],
+      "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
+      "height": "2' 04",
+      "weight": "15.2",
+      "category": "Seed",
+      "abilities": "Overgrow",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
+    },
+    {
+      "id": "2",
+      "name": "Ivysaur",
+      "type": ["Grass", "Poison"],
+      "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
+      "height": "3' 03",
+      "weight": "28.7",
+      "category": "Seed",
+      "abilities": "Overgrow",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png"
+    },
+    {
+      "id": "3",
+      "name": "Venusaur",
+      "type": ["Grass", "Poison"],
+      "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
+      "height": "6' 07",
+      "weight": "220.5",
+      "category": "Seed",
+      "abilities": "Overgrow",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png"
+    },
+    {
+      "id": "4",
+      "name": "Charmander",
+      "type": ["Fire"],
+      "weaknesses": ["Water", "Ground", "Rock"],
+      "height": "2' 00",
+      "weight": "18.7",
+      "category": "Lizard",
+      "abilities": "Blaze",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png"
+    },
+    {
+      "id": "5",
+      "name": "Charmeleon",
+      "type": ["Fire"],
+      "weaknesses": ["Water", "Ground", "Rock"],
+      "height": "3' 07",
+      "weight": "41.9",
+      "category": "Flame",
+      "abilities": "Blaze",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/005.png"
+    },
+    {
+      "id": "6",
+      "name": "Charizard",
+      "type": ["Fire", "Flying"],
+      "weaknesses": ["Water", "Electric", "Rock"],
+      "height": "5' 07",
+      "weight": "199.5",
+      "category": "Flame",
+      "abilities": "Blaze",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png"
+    },
+    {
+      "id": "7",
+      "name": "Squirtle",
+      "type": ["Water"],
+      "weaknesses": ["Grass", "Electric"],
+      "height": "1' 08",
+      "weight": "19.8",
+      "category": "Tiny Turtle",
+      "abilities": "Torrent",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/007.png"
+    },
+    {
+      "id": "8",
+      "name": "Wartortle",
+      "type": ["Water"],
+      "weaknesses": ["Grass", "Electric"],
+      "height": "3' 03",
+      "weight": "49.6",
+      "category": "Turtle",
+      "abilities": "Torrent",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/008.png"
+    },
+    {
+      "id": "9",
+      "name": "Blastoise",
+      "type": ["Water"],
+      "weaknesses": ["Grass", "Electric"],
+      "height": "5' 03",
+      "weight": "188.5",
+      "category": "Shellfish",
+      "abilities": "Torrent",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/009.png"
+    },
+    {
+      "id": "10",
+      "name": "Caterpie",
+      "type": ["Bug"],
+      "weaknesses": ["Fire", "Flying", "Rock"],
+      "height": "1' 00",
+      "weight": "6.4",
+      "category": "Worm",
+      "abilities": "Shield Dust",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/010.png"
+    },
+    {
+      "id": "11",
+      "name": "Metapod",
+      "type": ["Bug"],
+      "weaknesses": ["Fire", "Flying", "Rock"],
+      "height": "2' 04",
+      "weight": "21.8",
+      "category": "Cacoon",
+      "abilities": "Shed Skin",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/011.png"
+    },
+    {
+      "id": "12",
+      "name": "Butterfree",
+      "type": ["Bug", "Flying"],
+      "weaknesses": ["Fire", "Flying", "Rock", "Electric", "Ice"],
+      "height": "3' 07",
+      "weight": "70.5",
+      "category": "Butterfly",
+      "abilities": "Compound Eyes",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/012.png"
+    }
+  ]
+}

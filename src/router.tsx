@@ -1,8 +1,8 @@
 import ErrorPage from "./pages/ErrorPage.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import NewPokemon from "./components/NewPokemon.tsx";
+import PokedexPage from "./pages/PokedexPage.tsx";
 import PokemonList from "./components/PokemonList.tsx";
-import PokemonPage from "./pages/PokedexPage.tsx";
 import SinglePokemon from "./components/SinglePokemon.tsx";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -13,8 +13,8 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/pokemon",
-    element: <PokemonPage />,
+    path: "/us",
+    element: <PokedexPage />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "new",
+        path: "pokedex/new",
         element: <NewPokemon />,
         errorElement: <ErrorPage />,
       },
