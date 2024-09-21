@@ -1,9 +1,9 @@
-import ErrorPage from "./pages/ErrorPage.tsx";
-import HomePage from "./pages/HomePage.tsx";
-import NewPokemon from "./components/NewPokemon.tsx";
-import PokedexPage from "./pages/PokedexPage.tsx";
-import PokemonList from "./components/PokemonList.tsx";
-import SinglePokemon from "./components/SinglePokemon.tsx";
+import ErrorPage from "./pages/error-page/ErrorPage.tsx";
+import HomePage from "./pages/home-page/HomePage.tsx";
+import NewPokemon from "./components/new-pokemon/NewPokemon.tsx";
+import PokedexPage from "./pages/pokedex-page/PokedexPage.tsx";
+import PokemonList from "./components/pokemon-list/PokemonList.tsx";
+import SinglePokemon from "./components/single-pokemon/SinglePokemon.tsx";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "pokedex/add",
+        path: "pokedex/new",
         element: <NewPokemon />,
         errorElement: <ErrorPage />,
       },

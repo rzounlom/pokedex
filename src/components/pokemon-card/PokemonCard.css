@@ -1,0 +1,25 @@
+.pokemon-card {
+  width: 100%;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Media Queries */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .pokemon-card {
+    width: 21rem;
+  }
+
+  .list-group-item:last-of-type {
+    min-height: 65px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .pokemon-card {
+    width: 19rem;
+  }
+}

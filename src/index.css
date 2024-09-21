@@ -17,3 +17,18 @@ a {
 ul {
   list-style: none;
 }
+
+.page {
+  margin-top: 12vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* Media Queries */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .page {
+    margin-top: 15vh;
+  }
+}

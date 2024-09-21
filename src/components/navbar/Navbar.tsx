@@ -19,7 +19,7 @@ const Navbar: FC = () => {
           </Link>
         </li>
         <li>
-          <Link to="/us/pokedex/add">
+          <Link to="/us/pokedex/new">
             <MdAddCircleOutline />
           </Link>
         </li>
