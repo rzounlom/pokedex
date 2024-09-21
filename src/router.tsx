@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "pokedex/new",
+        path: "pokedex/add",
         element: <NewPokemon />,
         errorElement: <ErrorPage />,
       },
