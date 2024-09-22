@@ -1,3 +1,4 @@
+import EditPokemon from "./components/edit-pokemon/EditPokemon.tsx";
 import ErrorPage from "./pages/error-page/ErrorPage.tsx";
 import HomePage from "./pages/home-page/HomePage.tsx";
 import NewPokemon from "./components/new-pokemon/NewPokemon.tsx";
@@ -30,6 +31,11 @@ export const router = createBrowserRouter([
       {
         path: "pokedex/new",
         element: <NewPokemon />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "pokedex/edit/:id",
+        element: <EditPokemon />,
         errorElement: <ErrorPage />,
       },
     ],

@@ -5,6 +5,7 @@ import { Badge, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Pokemon } from "../../types";
+import { determineBadgeColor } from "../../utils/determineBadgeColor";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
@@ -24,7 +25,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
             <strong>Type:</strong>{" "}
             {pokemon.type.map((item) => (
               <Badge
-                bg="info"
+                bg={determineBadgeColor(item)}
                 style={{ marginLeft: "2px" }}
                 key={`${pokemon.id}-${item}`}
               >
@@ -45,7 +46,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
             <strong>Weaknesses:</strong>
             {pokemon.weaknesses.map((item) => (
               <Badge
-                bg="info"
+                bg={determineBadgeColor(item)}
                 style={{ marginLeft: "2px" }}
                 key={`${pokemon.id}-${item}`}
               >

@@ -1,6 +1,6 @@
 import "./SinglePokemon.css";
 
-import { Badge, Container } from "react-bootstrap";
+import { Badge, Button, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
 import { FC } from "react";
@@ -20,6 +20,7 @@ const SinglePokemon: FC = () => {
         <Link to="/us/pokedex">
           <IoArrowBackCircleOutline />
         </Link>
+
         <h1>{foundPokemon?.name}</h1>
       </div>
       <div className="img-container">
@@ -67,6 +68,14 @@ const SinglePokemon: FC = () => {
               </Badge>
             ))}
           </div>
+        </div>
+        <div className="action-btn info">
+          <Link to={`/us/pokedex/edit/${foundPokemon?.id}`}>
+            <Button variant="outline-primary">Edit</Button>
+          </Link>
+          <Link to="/us/pokedex">
+            <Button variant="outline-danger">Delete</Button>
+          </Link>
         </div>
       </div>
     </Container>

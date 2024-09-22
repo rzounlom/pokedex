@@ -60,6 +60,10 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
+.single-pokemon .info-container .description {
+  width: 100%;
+}
+
 .single-pokemon .info-container .stats {
   margin-top: 10px;
   height: 200px;
@@ -123,4 +127,54 @@
 .single-pokemon .info-container .type .pills div:first-of-type,
 .single-pokemon .info-container .weaknesses .pills div:first-of-type {
   margin-left: 0;
+}
+
+.single-pokemon .info-container .action-btn {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.single-pokemon .info-container .action-btn a {
+  width: 45%;
+}
+
+.single-pokemon .info-container .action-btn a button {
+  width: 100%;
+}
+
+/* Media Queries */
+
+/* Desktop */
+@media (min-width: 1080px) {
+  .single-pokemon {
+    width: 100%;
+  }
+
+  .single-pokemon .heading h1 {
+    font-size: 4rem;
+  }
+
+  .single-pokemon .heading svg {
+    font-size: 4.5rem;
+  }
+
+  .img-container {
+    width: 50%;
+    height: 50%;
+  }
+
+  .single-pokemon .info-container {
+    width: 50%;
+  }
+
+  .single-pokemon .info-container .stats {
+    height: 250px;
+  }
+
+  .single-pokemon .info-container .stats .stats-item {
+    height: 50%;
+  }
 }

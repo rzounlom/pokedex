@@ -1,9 +1,7 @@
 import { Container } from "react-bootstrap";
 import { FC } from "react";
 
-interface NewPokemonProps {}
-
-const NewPokemon: FC<NewPokemonProps> = ({}) => {
+const NewPokemon: FC = () => {
   return <Container className="page">NewPokemon</Container>;
 };
 
