@@ -21,13 +21,18 @@
       "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
     },
     {
-      "id": "2",
       "name": "Ivysaur",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png",
+      "description": "There is a bud on this Pokémon's back. To support its weight, Ivysaur's legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it's a sign that the bud will bloom into a large flower soon.",
+      "heightFt": "3",
+      "heightIn": "03",
+      "weight": "28.7",
+      "category": "Seed",
+      "abilities": "Overgrow",
       "type": [
         "Grass",
         "Poison"
       ],
-      "description": "There is a bud on this Pokémon's back. To support its weight, Ivysaur's legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it's a sign that the bud will bloom into a large flower soon.",
       "weaknesses": [
         "Fire",
         "Ice",
@@ -35,10 +40,7 @@
         "Psychic"
       ],
       "height": "3' 03\"",
-      "weight": "28.7",
-      "category": "Seed",
-      "abilities": "Overgrow",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png"
+      "id": "2"
     },
     {
       "id": "3",

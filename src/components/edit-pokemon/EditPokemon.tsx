@@ -1,74 +1,109 @@
 import "./EditPokemon.css";
 
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
-import React, { FC, useState } from "react";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { FC, useEffect, useState } from "react";
 
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import PokemonCard from "../pokemon-card/PokemonCard";
-import { pokemon } from "../../../db/db.json";
 import { pokemonTypes } from "../../data";
+import { toast } from "react-toastify";
 
 const EditPokemon: FC = () => {
+  const naviagate = useNavigate();
   //find the pokemon by id
   const { id } = useParams<{ id: string }>();
 
-  const foundPokemon = pokemon.find((poke) => poke.id === id);
+  // loading state
+  const [loading, setLoading] = useState(false);
 
-  console.log({ id, pokemon, foundPokemon });
   // State to manage the form data
-  const [newPokemon, setNewPokemon] = useState({
-    name: foundPokemon?.name || "",
-    img: foundPokemon?.img || "",
-    description: foundPokemon?.description || "",
-    heightFt: foundPokemon?.height.split("'")[0] || "0",
-    heightIn: foundPokemon?.height.split(" ")[1].replace('"', "") || "00",
-    weight: foundPokemon?.weight || "",
-    category: foundPokemon?.category || "",
-    abilities: foundPokemon?.abilities || "",
-    type: foundPokemon?.type ? [...foundPokemon.type] : [],
-    weaknesses: foundPokemon?.weaknesses ? [...foundPokemon.weaknesses] : [],
+  const [updatedPokemon, setupdatedPokemon] = useState({
+    name: "",
+    img: "",
+    description: "",
+    heightFt: "00",
+    heightIn: "00",
+    weight: "",
+    category: "",
+    abilities: "",
+    type: [] as string[],
+    weaknesses: [] as string[],
   });
+
+  useEffect(() => {
+    try {
+      setLoading(true);
+      const findPokemon = async () => {
+        //fetch the pokemon by id
+        const response = await fetch(`http://localhost:4000/pokemon/${id}`);
+        const data = await response.json();
+
+        setupdatedPokemon({
+          //set the state with the fetched pokemon data
+          name: data.name,
+          img: data.img,
+          description: data.description,
+          heightFt: data.height.split("'")[0],
+          heightIn: data.height.split(" ")[1].replace('"', ""),
+          weight: data.weight,
+          category: data.category,
+          abilities: data.abilities,
+          type: [...data.type],
+          weaknesses: [...data.weaknesses],
+        });
+      };
+
+      findPokemon(); //call the function
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to fetch Pokemon"); // show error message
+    } finally {
+      setLoading(false);
+    }
+  }, [id]);
+
+  // console.log({ id, pokemon, foundPokemon });
 
   // onChange handler to update the state as the user types
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setNewPokemon({
-      ...newPokemon,
+    setupdatedPokemon({
+      ...updatedPokemon,
       [name]: value,
     });
   };
 
   const handleWeaknessChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
-    const isWithinArray = newPokemon.weaknesses.includes(value);
+    const isWithinArray = updatedPokemon.weaknesses.includes(value);
     if (checked && !isWithinArray) {
-      setNewPokemon({
-        ...newPokemon,
-        weaknesses: [...newPokemon.weaknesses, value],
+      setupdatedPokemon({
+        ...updatedPokemon,
+        weaknesses: [...updatedPokemon.weaknesses, value],
       });
     } else {
-      setNewPokemon({
-        ...newPokemon,
-        weaknesses: newPokemon.weaknesses.filter((item) => item !== value),
+      setupdatedPokemon({
+        ...updatedPokemon,
+        weaknesses: updatedPokemon.weaknesses.filter((item) => item !== value),
       });
     }
   };
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
-    const isWithinArray = newPokemon.type.includes(value);
+    const isWithinArray = updatedPokemon.type.includes(value);
     if (checked && !isWithinArray) {
-      setNewPokemon({
-        ...newPokemon,
-        type: [...newPokemon.type, value],
+      setupdatedPokemon({
+        ...updatedPokemon,
+        type: [...updatedPokemon.type, value],
       });
     } else {
-      setNewPokemon({
-        ...newPokemon,
-        type: newPokemon.type.filter((item) => item !== value),
+      setupdatedPokemon({
+        ...updatedPokemon,
+        type: updatedPokemon.type.filter((item) => item !== value),
       });
     }
   };
@@ -78,17 +113,17 @@ const EditPokemon: FC = () => {
   //   (field: "type" | "weaknesses") =>
   //   (e: React.ChangeEvent<HTMLInputElement>) => {
   //     const { value, checked } = e.target;
-  //     const isWithinArray = newPokemon[field].includes(value);
+  //     const isWithinArray = updatedPokemon[field].includes(value);
 
   //     if (checked && !isWithinArray) {
-  //       setNewPokemon({
-  //         ...newPokemon,
-  //         [field]: [...newPokemon[field], value],
+  //       setupdatedPokemon({
+  //         ...updatedPokemon,
+  //         [field]: [...updatedPokemon[field], value],
   //       });
   //     } else {
-  //       setNewPokemon({
-  //         ...newPokemon,
-  //         [field]: newPokemon[field].filter((item) => item !== value),
+  //       setupdatedPokemon({
+  //         ...updatedPokemon,
+  //         [field]: updatedPokemon[field].filter((item) => item !== value),
   //       });
   //     }
   //   };
@@ -96,11 +131,31 @@ const EditPokemon: FC = () => {
   //to use the function above, you can call it like this: handleArrayChange("type") or handleArrayChange("weaknesses")
 
   // onSubmit handler to handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Updating Pokemon Submitted: ", newPokemon);
+    console.log("Updating Pokemon Submitted: ", updatedPokemon);
 
     // update the pokemon in the database
+    try {
+      setLoading(true);
+      await fetch(`http://localhost:4000/pokemon/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...updatedPokemon,
+          height: `${updatedPokemon.heightFt}' ${updatedPokemon.heightIn}"`,
+        }),
+      });
+
+      toast.success("Pokémon Updated Successfully"); // show success message
+      // redirect to the pokemon details page
+      naviagate(`/us/pokedex/${id}`);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to update Pokémon"); // show error message
+    }
     //send toast message
     // redirect to the pokemon details page
   };
@@ -114,185 +169,190 @@ const EditPokemon: FC = () => {
         <h2>Edit Pokémon</h2>
       </div>
       {/* Bootstrap Form */}
-      <main>
-        <Form onSubmit={handleSubmit}>
-          <Row>
-            {/* Name */}
-            <Col md={6}>
-              <Form.Group controlId="formName" className="mb-3">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Pokémon Name"
-                  name="name"
-                  value={newPokemon.name}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-            </Col>
+      {loading ? (
+        <Spinner animation="border" role="status" />
+      ) : (
+        <main>
+          <Form onSubmit={handleSubmit}>
+            <Row>
+              {/* Name */}
+              <Col md={6}>
+                <Form.Group controlId="formName" className="mb-3">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Pokémon Name"
+                    name="name"
+                    value={updatedPokemon.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
 
-            {/* Image */}
-            <Col md={6}>
-              <Form.Group controlId="formImage" className="mb-3">
-                <Form.Label>Image URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Image URL"
-                  name="img"
-                  value={newPokemon.img}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-            </Col>
-          </Row>
+              {/* Image */}
+              <Col md={6}>
+                <Form.Group controlId="formImage" className="mb-3">
+                  <Form.Label>Image URL</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Image URL"
+                    name="img"
+                    value={updatedPokemon.img}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
-          {/* Description */}
-          <Form.Group controlId="formDescription" className="mb-3">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              placeholder="Enter a short description"
-              name="description"
-              value={newPokemon.description}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-
-          <Row>
-            {/* Height */}
-            <Col md={6}>
-              <Form.Group controlId="formHeightFt" className="mb-3">
-                <Form.Label>Height (ft)</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Height in Feet"
-                  name="heightFt"
-                  value={newPokemon.heightFt}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-            </Col>
-
-            <Col md={6}>
-              <Form.Group controlId="formHeightIn" className="mb-3">
-                <Form.Label>Height (in)</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Height in Inches"
-                  name="heightIn"
-                  value={newPokemon.heightIn}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-
-          {/* Weight */}
-          <Form.Group controlId="formWeight" className="mb-3">
-            <Form.Label>Weight (lbs)</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Weight"
-              name="weight"
-              value={newPokemon.weight}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-
-          {/* Category */}
-          <Form.Group controlId="formCategory" className="mb-3">
-            <Form.Label>Category</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Pokémon Category"
-              name="category"
-              value={newPokemon.category}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-
-          {/* Abilities */}
-          <Form.Group controlId="formAbilities" className="mb-3">
-            <Form.Label>Abilities</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Abilities"
-              name="abilities"
-              value={newPokemon.abilities}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-
-          {/* Type */}
-          <Form.Group controlId="formType" className="mb-3">
-            <Form.Label>Select Pokémon Type(s)</Form.Label>
-            <div>
-              {pokemonTypes.map((type) => (
-                <Form.Check
-                  key={type}
-                  inline
-                  label={type}
-                  type="checkbox"
-                  id={type.toLowerCase()}
-                  name="types"
-                  value={type}
-                  checked={newPokemon.type.includes(type)}
-                  onChange={handleTypeChange}
-                />
-              ))}
-            </div>
-          </Form.Group>
-
-          {/* Weaknesses */}
-          <Form.Group controlId="formWeaknesses" className="mb-3">
-            <Form.Label>Select Pokémon Weaknesse(s)</Form.Label>
-
-            <div>
-              {pokemonTypes.map((type) => (
-                <Form.Check
-                  key={type}
-                  inline
-                  label={type}
-                  type="checkbox"
-                  id={type.toLowerCase()}
-                  name="weaknesses"
-                  value={type}
-                  checked={newPokemon.weaknesses.includes(type)}
-                  onChange={handleWeaknessChange}
-                />
-              ))}
-            </div>
-          </Form.Group>
-
-          {/* Submit Button */}
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-        <Container fluid className="preview-container">
-          <Row>
-            <Col md={12} className="mb-4">
-              <h2 className="mt-4">Edit Pokémon Preview </h2> <br />
-              <PokemonCard
-                type="edit"
-                pokemon={{
-                  ...newPokemon,
-                  height: `${newPokemon.heightFt}' ${newPokemon.heightIn}"`,
-                }}
+            {/* Description */}
+            <Form.Group controlId="formDescription" className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Enter a short description"
+                name="description"
+                value={updatedPokemon.description}
+                onChange={handleChange}
+                required
               />
-            </Col>
-          </Row>
-        </Container>
-      </main>
+            </Form.Group>
+
+            <Row>
+              {/* Height */}
+              <Col md={6}>
+                <Form.Group controlId="formHeightFt" className="mb-3">
+                  <Form.Label>Height (ft)</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Height in Feet"
+                    name="heightFt"
+                    value={updatedPokemon.heightFt}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+
+              <Col md={6}>
+                <Form.Group controlId="formHeightIn" className="mb-3">
+                  <Form.Label>Height (in)</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Height in Inches"
+                    name="heightIn"
+                    value={updatedPokemon.heightIn}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            {/* Weight */}
+            <Form.Group controlId="formWeight" className="mb-3">
+              <Form.Label>Weight (lbs)</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Weight"
+                name="weight"
+                value={updatedPokemon.weight}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            {/* Category */}
+            <Form.Group controlId="formCategory" className="mb-3">
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Pokémon Category"
+                name="category"
+                value={updatedPokemon.category}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            {/* Abilities */}
+            <Form.Group controlId="formAbilities" className="mb-3">
+              <Form.Label>Abilities</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Abilities"
+                name="abilities"
+                value={updatedPokemon.abilities}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
+            {/* Type */}
+            <Form.Group controlId="formType" className="mb-3">
+              <Form.Label>Select Pokémon Type(s)</Form.Label>
+              <div>
+                {pokemonTypes.map((type) => (
+                  <Form.Check
+                    key={type}
+                    inline
+                    label={type}
+                    type="checkbox"
+                    id={type.toLowerCase()}
+                    name="types"
+                    value={type}
+                    checked={updatedPokemon.type.includes(type)}
+                    onChange={handleTypeChange}
+                  />
+                ))}
+              </div>
+            </Form.Group>
+
+            {/* Weaknesses */}
+            <Form.Group controlId="formWeaknesses" className="mb-3">
+              <Form.Label>Select Pokémon Weaknesse(s)</Form.Label>
+
+              <div>
+                {pokemonTypes.map((type) => (
+                  <Form.Check
+                    key={type}
+                    inline
+                    label={type}
+                    type="checkbox"
+                    id={type.toLowerCase()}
+                    name="weaknesses"
+                    value={type}
+                    checked={updatedPokemon.weaknesses.includes(type)}
+                    onChange={handleWeaknessChange}
+                  />
+                ))}
+              </div>
+            </Form.Group>
+
+            {/* Submit Button */}
+            <Button variant="primary" type="submit" disabled={loading}>
+              {loading && <Spinner as="span" animation="grow" size="sm" />}
+              {loading ? "Submitting..." : "Submit"}
+            </Button>
+          </Form>
+          <Container fluid className="preview-container">
+            <Row>
+              <Col md={12} className="mb-4">
+                <h2 className="mt-4">Edit Pokémon Preview </h2> <br />
+                <PokemonCard
+                  type="edit"
+                  pokemon={{
+                    ...updatedPokemon,
+                    height: `${updatedPokemon.heightFt}' ${updatedPokemon.heightIn}"`,
+                  }}
+                />
+              </Col>
+            </Row>
+          </Container>
+        </main>
+      )}
     </Container>
   );
 };
