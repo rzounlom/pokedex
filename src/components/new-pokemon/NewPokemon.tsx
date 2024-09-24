@@ -1,12 +1,16 @@
 import "./NewPokemon.css";
 
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import React, { FC, useState } from "react";
 
 import PokemonCard from "../pokemon-card/PokemonCard";
 import { pokemonTypes } from "../../data";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const NewPokemon: FC = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   // State to manage the form data
   const [newPokemon, setNewPokemon] = useState({
     name: "",
@@ -87,13 +91,33 @@ const NewPokemon: FC = () => {
   //to use the function above, you can call it like this: handleArrayChange("type") or handleArrayChange("weaknesses")
 
   // onSubmit handler to handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("New Pokemon Submitted: ", newPokemon);
+
     // You can add further logic to send the data to a server here
     //add pokemon to db
-    //send toast message
-    //reroute to the pokedex page
+    try {
+      setLoading(true);
+      await fetch("http://localhost:4000/pokemon", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...newPokemon,
+          height: `${newPokemon.heightFt}' ${newPokemon.heightIn}"`, //combine heightFt and heightIn into one string
+        }),
+      });
+      //show toast message if successful
+      toast.success("New Pokémon added successfully");
+      setLoading(false);
+      //redirect user to pokedex page
+      navigate("/us/pokedex");
+    } catch (error) {
+      console.error(error);
+      //show toast message if error
+      toast.error("Failed to add new Pokémon");
+    }
   };
 
   return (
@@ -258,8 +282,9 @@ const NewPokemon: FC = () => {
           </Form.Group>
 
           {/* Submit Button */}
-          <Button variant="primary" type="submit">
-            Submit
+          <Button variant="primary" type="submit" disabled={loading}>
+            {loading && <Spinner as="span" animation="grow" size="sm" />}
+            {loading ? "Submitting..." : "Submit"}
           </Button>
         </Form>
         <Container fluid className="preview-container">

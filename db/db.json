@@ -1,35 +1,63 @@
 {
   "pokemon": [
     {
-      "id": "1",
       "name": "Bulbasaur",
-      "type": ["Grass", "Poison"],
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png",
       "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
-      "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
-      "height": "2' 04\"",
+      "heightFt": "2",
+      "heightIn": "03",
       "weight": "15.2",
       "category": "Seed",
       "abilities": "Overgrow",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
+      "type": [
+        "Grass",
+        "Poison"
+      ],
+      "weaknesses": [
+        "Fire",
+        "Ice",
+        "Flying",
+        "Psychic"
+      ],
+      "height": "2' 03\"",
+      "id": "1"
     },
     {
-      "id": "2",
       "name": "Ivysaur",
-      "type": ["Grass", "Poison"],
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png",
       "description": "There is a bud on this Pokémon's back. To support its weight, Ivysaur's legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it's a sign that the bud will bloom into a large flower soon.",
-      "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
-      "height": "3' 03\"",
+      "heightFt": "3",
+      "heightIn": "03",
       "weight": "28.7",
       "category": "Seed",
       "abilities": "Overgrow",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png"
+      "type": [
+        "Poison",
+        "Grass"
+      ],
+      "weaknesses": [
+        "Fire",
+        "Ice",
+        "Flying",
+        "Psychic"
+      ],
+      "height": "3' 03\"",
+      "id": "2"
     },
     {
       "id": "3",
       "name": "Venusaur",
-      "type": ["Grass", "Poison"],
+      "type": [
+        "Grass",
+        "Poison"
+      ],
       "description": "There is a large flower on Venusaur's back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower's aroma soothes the emotions of people.",
-      "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],
+      "weaknesses": [
+        "Fire",
+        "Ice",
+        "Flying",
+        "Psychic"
+      ],
       "height": "6' 07\"",
       "weight": "220.5",
       "category": "Seed",
@@ -39,9 +67,15 @@
     {
       "id": "4",
       "name": "Charmander",
-      "type": ["Fire"],
+      "type": [
+        "Fire"
+      ],
       "description": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely.",
-      "weaknesses": ["Water", "Ground", "Rock"],
+      "weaknesses": [
+        "Water",
+        "Ground",
+        "Rock"
+      ],
       "height": "2' 00\"",
       "weight": "18.7",
       "category": "Lizard",
@@ -51,9 +85,15 @@
     {
       "id": "5",
       "name": "Charmeleon",
-      "type": ["Fire"],
+      "type": [
+        "Fire"
+      ],
       "description": "Charmeleon mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it turns aggressive. In this excited state, the flame at the tip of its tail flares with a bluish white color.",
-      "weaknesses": ["Water", "Ground", "Rock"],
+      "weaknesses": [
+        "Water",
+        "Ground",
+        "Rock"
+      ],
       "height": "3' 07\"",
       "weight": "41.9",
       "category": "Flame",
@@ -63,9 +103,16 @@
     {
       "id": "6",
       "name": "Charizard",
-      "type": ["Fire", "Flying"],
+      "type": [
+        "Fire",
+        "Flying"
+      ],
       "description": "Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself.",
-      "weaknesses": ["Water", "Electric", "Rock"],
+      "weaknesses": [
+        "Water",
+        "Electric",
+        "Rock"
+      ],
       "height": "5' 07\"",
       "weight": "199.5",
       "category": "Flame",
@@ -75,9 +122,14 @@
     {
       "id": "7",
       "name": "Squirtle",
-      "type": ["Water"],
+      "type": [
+        "Water"
+      ],
       "description": "Squirtle's shell is not merely used for protection. The shell's rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds.",
-      "weaknesses": ["Grass", "Electric"],
+      "weaknesses": [
+        "Grass",
+        "Electric"
+      ],
       "height": "1' 08\"",
       "weight": "19.8",
       "category": "Tiny Turtle",
@@ -85,23 +137,35 @@
       "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/007.png"
     },
     {
-      "id": "8",
       "name": "Wartortle",
-      "type": ["Water"],
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/008.png",
       "description": "Its long, furry tail is a symbol of longevity, making it quite popular among older people.",
-      "weaknesses": ["Grass", "Electric"],
-      "height": "3' 03\"",
+      "heightFt": "3",
+      "heightIn": "03",
       "weight": "49.6",
       "category": "Turtle",
       "abilities": "Torrent",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/008.png"
+      "type": [
+        "Water"
+      ],
+      "weaknesses": [
+        "Grass",
+        "Electric"
+      ],
+      "height": "3' 03\"",
+      "id": "8"
     },
     {
       "id": "9",
       "name": "Blastoise",
-      "type": ["Water"],
+      "type": [
+        "Water"
+      ],
       "description": "Blastoise has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet.",
-      "weaknesses": ["Grass", "Electric"],
+      "weaknesses": [
+        "Grass",
+        "Electric"
+      ],
       "height": "5' 03\"",
       "weight": "188.5",
       "category": "Shellfish",
@@ -111,9 +175,15 @@
     {
       "id": "10",
       "name": "Caterpie",
-      "type": ["Bug"],
+      "type": [
+        "Bug"
+      ],
       "description": "For protection, it releases a horrible stench from the antenna on its head to drive away enemies.",
-      "weaknesses": ["Fire", "Flying", "Rock"],
+      "weaknesses": [
+        "Fire",
+        "Flying",
+        "Rock"
+      ],
       "height": "1' 00\"",
       "weight": "6.4",
       "category": "Worm",
@@ -121,28 +191,65 @@
       "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/010.png"
     },
     {
-      "id": "11",
       "name": "Metapod",
-      "type": ["Bug"],
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/011.png",
       "description": "The shell covering this Pokémon's body is as hard as an iron slab. Metapod does not move very much. It stays still because it is preparing its soft innards for evolution inside the hard shell.",
-      "weaknesses": ["Fire", "Flying", "Rock"],
-      "height": "2' 04\"",
+      "heightFt": "2",
+      "heightIn": "04",
       "weight": "21.8",
       "category": "Cacoon",
       "abilities": "Shed Skin",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/011.png"
+      "type": [
+        "Bug"
+      ],
+      "weaknesses": [
+        "Fire",
+        "Flying",
+        "Rock"
+      ],
+      "height": "2' 04\"",
+      "id": "11"
     },
     {
       "id": "12",
       "name": "Butterfree",
-      "type": ["Bug", "Flying"],
+      "type": [
+        "Bug",
+        "Flying"
+      ],
       "description": "In battle, it flaps its wings at great speed to release highly toxic dust into the air.",
-      "weaknesses": ["Fire", "Flying", "Rock", "Electric", "Ice"],
+      "weaknesses": [
+        "Fire",
+        "Flying",
+        "Rock",
+        "Electric",
+        "Ice"
+      ],
       "height": "3' 07\"",
       "weight": "70.5",
       "category": "Butterfly",
       "abilities": "Compound Eyes",
       "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/012.png"
+    },
+    {
+      "id": "cf6d",
+      "name": "Weedle",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/013.png",
+      "description": "Beware of the sharp stinger on its head. It hides in grass and bushes where it eats leaves.",
+      "height": "1' 00\"",
+      "weight": "7.1",
+      "category": "Hairy Bug",
+      "abilities": "Shield Dust",
+      "type": [
+        "Bug",
+        "Poison"
+      ],
+      "weaknesses": [
+        "Fire",
+        "Flying",
+        "Psychic",
+        "Rock"
+      ]
     }
   ]
 }
