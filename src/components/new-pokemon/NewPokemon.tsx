@@ -64,6 +64,28 @@ const NewPokemon: FC = () => {
     }
   };
 
+  // combine the two functions above into one
+  // const handleArrayChange =
+  //   (field: "type" | "weaknesses") =>
+  //   (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { value, checked } = e.target;
+  //     const isWithinArray = newPokemon[field].includes(value);
+
+  //     if (checked && !isWithinArray) {
+  //       setNewPokemon({
+  //         ...newPokemon,
+  //         [field]: [...newPokemon[field], value],
+  //       });
+  //     } else {
+  //       setNewPokemon({
+  //         ...newPokemon,
+  //         [field]: newPokemon[field].filter((item) => item !== value),
+  //       });
+  //     }
+  //   };
+
+  //to use the function above, you can call it like this: handleArrayChange("type") or handleArrayChange("weaknesses")
+
   // onSubmit handler to handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
