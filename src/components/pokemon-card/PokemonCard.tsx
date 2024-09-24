@@ -1,20 +1,33 @@
 import "./PokemonCard.css";
 
 import { Badge, Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { NewPokemon, Pokemon } from "../../types";
 
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Pokemon } from "../../types";
 import { determineBadgeColor } from "../../utils/determineBadgeColor";
 
 interface PokemonCardProps {
-  pokemon: Pokemon;
+  pokemon: Pokemon | NewPokemon;
+  type?: string;
 }
 
-const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
+const PokemonCard: FC<PokemonCardProps> = ({ pokemon, type }) => {
+  const tempImgUrl =
+    "https://i.pinimg.com/550x/95/d5/cd/95d5cded00f3a3e8a98fb1eed568aa9f.jpg";
   return (
-    <Card className="pokemon-card">
-      <Card.Img variant="top" src={pokemon.img} alt={pokemon.name} />
+    <Card
+      className={
+        type && (type === "new" || type === "edit")
+          ? "pokemon-card-new"
+          : "pokemon-card"
+      }
+    >
+      <Card.Img
+        variant="top"
+        src={pokemon.img || tempImgUrl}
+        alt={pokemon?.name}
+      />
       <Card.Body>
         <Card.Title>{pokemon.name}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
@@ -27,7 +40,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
               <Badge
                 bg={determineBadgeColor(item)}
                 style={{ marginLeft: "2px" }}
-                key={`${pokemon.id}-${item}`}
+                key={`${"id" in pokemon ? pokemon.id : "new"}-${item}`}
               >
                 {item}
               </Badge>
@@ -48,17 +61,19 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
               <Badge
                 bg={determineBadgeColor(item)}
                 style={{ marginLeft: "2px" }}
-                key={`${pokemon.id}-${item}`}
+                key={`${"id" in pokemon ? pokemon.id : "new"}-${item}`}
               >
                 {item}
               </Badge>
             ))}
           </ListGroupItem>
         </ListGroup>
-        <Link to={`/us/pokedex/${pokemon.id}`}>
-          <Button variant="info" style={{ color: "white" }}>
-            Learn More
-          </Button>
+        <Link to={`/us/pokedex/${"id" in pokemon ? pokemon.id : ""}`}>
+          {type !== "new" && type !== "edit" && (
+            <Button variant="info" style={{ color: "white" }}>
+              Learn More
+            </Button>
+          )}
         </Link>
       </Card.Body>
     </Card>
