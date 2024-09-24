@@ -54,6 +54,7 @@ const SinglePokemon: FC = () => {
           <div className="pills">
             {foundPokemon?.type.map((type) => (
               <Badge
+                pill
                 bg={determineBadgeColor(type)}
                 as="div"
                 key={`type-${type}`}
@@ -68,6 +69,7 @@ const SinglePokemon: FC = () => {
           <div className="pills">
             {foundPokemon?.weaknesses.map((weakness) => (
               <Badge
+                pill
                 bg={determineBadgeColor(weakness)}
                 as="div"
                 key={`weakness-${weakness}`}

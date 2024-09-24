@@ -38,6 +38,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon, type }) => {
             <strong>Type:</strong>{" "}
             {pokemon.type.map((item) => (
               <Badge
+                pill
                 bg={determineBadgeColor(item)}
                 style={{ marginLeft: "2px" }}
                 key={`${"id" in pokemon ? pokemon.id : "new"}-${item}`}
@@ -59,6 +60,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon, type }) => {
             <strong>Weaknesses:</strong>
             {pokemon.weaknesses.map((item) => (
               <Badge
+                pill
                 bg={determineBadgeColor(item)}
                 style={{ marginLeft: "2px" }}
                 key={`${"id" in pokemon ? pokemon.id : "new"}-${item}`}
