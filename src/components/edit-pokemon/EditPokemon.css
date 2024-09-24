@@ -1,0 +1,47 @@
+.edit-pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.edit-pokemon main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.edit-pokemon main form {
+  width: 100%;
+}
+
+.edit-pokemon main .preview-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Media Queries */
+
+/* Desktop */
+
+@media screen and (min-width: 1080px) {
+  .edit-pokemon main {
+    min-height: 50vh;
+    overflow: auto;
+    flex-direction: row;
+  }
+
+  .edit-pokemon main form {
+    width: 50%;
+  }
+
+  .edit-pokemon main .preview-container {
+    width: 50%;
+    margin-top: 0;
+  }
+}
