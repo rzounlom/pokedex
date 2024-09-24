@@ -10,15 +10,18 @@ import { determineBadgeColor } from "../../utils/determineBadgeColor";
 import { toast } from "react-toastify";
 
 const SinglePokemon: FC = () => {
+  const tempImgUrl =
+    "https://i.pinimg.com/550x/95/d5/cd/95d5cded00f3a3e8a98fb1eed568aa9f.jpg";
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams<{ id: string }>();
   const [show, setShow] = useState(false);
   const onClose = () => setShow(false);
+
   const [foundPokemon, setfoundPokemon] = useState({
-    id,
+    id: "",
     name: "",
-    img: "",
+    img: tempImgUrl,
     description: "",
     height: "",
     category: "",
@@ -146,7 +149,25 @@ const SinglePokemon: FC = () => {
             </div>
             <div className="action-btn info">
               <Link to={`/us/pokedex/edit/${foundPokemon?.id}`}>
-                <Button variant="outline-primary">Edit</Button>
+                <Button
+                  variant="outline-primary"
+                  onClick={() =>
+                    setfoundPokemon({
+                      id: "",
+                      name: "",
+                      img: tempImgUrl,
+                      description: "",
+                      height: "",
+                      category: "",
+                      weight: "",
+                      abilities: "",
+                      type: [],
+                      weaknesses: [],
+                    })
+                  }
+                >
+                  Edit
+                </Button>
               </Link>
               <Button variant="outline-danger" onClick={() => setShow(true)}>
                 Delete

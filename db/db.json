@@ -1,24 +1,26 @@
 {
   "pokemon": [
     {
-      "id": "1",
       "name": "Bulbasaur",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png",
+      "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
+      "heightFt": "2",
+      "heightIn": "03",
+      "weight": "15.2",
+      "category": "Seed",
+      "abilities": "Overgrow",
       "type": [
         "Grass",
         "Poison"
       ],
-      "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
       "weaknesses": [
         "Fire",
         "Ice",
         "Flying",
         "Psychic"
       ],
-      "height": "2' 04\"",
-      "weight": "15.2",
-      "category": "Seed",
-      "abilities": "Overgrow",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
+      "height": "2' 03\"",
+      "id": "1"
     },
     {
       "name": "Ivysaur",
@@ -135,21 +137,23 @@
       "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/007.png"
     },
     {
-      "id": "8",
       "name": "Wartortle",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/008.png",
+      "description": "Its long, furry tail is a symbol of longevity, making it quite popular among older people.",
+      "heightFt": "3",
+      "heightIn": "03",
+      "weight": "49.6",
+      "category": "Turtle",
+      "abilities": "Torrent",
       "type": [
         "Water"
       ],
-      "description": "Its long, furry tail is a symbol of longevity, making it quite popular among older people.",
       "weaknesses": [
         "Grass",
         "Electric"
       ],
       "height": "3' 03\"",
-      "weight": "49.6",
-      "category": "Turtle",
-      "abilities": "Torrent",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/008.png"
+      "id": "8"
     },
     {
       "id": "9",
@@ -187,22 +191,24 @@
       "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/010.png"
     },
     {
-      "id": "11",
       "name": "Metapod",
+      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/011.png",
+      "description": "The shell covering this Pokémon's body is as hard as an iron slab. Metapod does not move very much. It stays still because it is preparing its soft innards for evolution inside the hard shell.",
+      "heightFt": "2",
+      "heightIn": "04",
+      "weight": "21.8",
+      "category": "Cacoon",
+      "abilities": "Shed Skin",
       "type": [
         "Bug"
       ],
-      "description": "The shell covering this Pokémon's body is as hard as an iron slab. Metapod does not move very much. It stays still because it is preparing its soft innards for evolution inside the hard shell.",
       "weaknesses": [
         "Fire",
         "Flying",
         "Rock"
       ],
       "height": "2' 04\"",
-      "weight": "21.8",
-      "category": "Cacoon",
-      "abilities": "Shed Skin",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/011.png"
+      "id": "11"
     },
     {
       "id": "12",
