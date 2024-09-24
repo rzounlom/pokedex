@@ -30,8 +30,8 @@
       "category": "Seed",
       "abilities": "Overgrow",
       "type": [
-        "Grass",
-        "Poison"
+        "Poison",
+        "Grass"
       ],
       "weaknesses": [
         "Fire",
@@ -244,28 +244,6 @@
         "Psychic",
         "Rock"
       ]
-    },
-    {
-      "id": "b377",
-      "name": "Kakuna",
-      "img": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/014.png",
-      "description": "Able to move only slightly. When endangered, it may stick out its stinger and poison its enemy.",
-      "heightFt": "2",
-      "heightIn": "00",
-      "weight": "22",
-      "category": "Cocoon",
-      "abilities": "Shed Skin",
-      "type": [
-        "Bug",
-        "Poison"
-      ],
-      "weaknesses": [
-        "Fire",
-        "Flying",
-        "Psychic",
-        "Rock"
-      ],
-      "height": "2' 00\""
     }
   ]
 }

@@ -13,8 +13,6 @@ const DeletePokemonModal: FC<DeletePokemonModalProps> = ({
   show,
   onClose,
 }) => {
-  console.log({ deletePokemon, show, onClose });
-
   return (
     <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
@@ -25,7 +23,7 @@ const DeletePokemonModal: FC<DeletePokemonModalProps> = ({
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-        <Button variant="danger" onClick={onClose}>
+        <Button variant="danger" onClick={deletePokemon}>
           Delete
         </Button>
       </Modal.Footer>

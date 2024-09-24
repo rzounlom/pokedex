@@ -133,7 +133,6 @@ const EditPokemon: FC = () => {
   // onSubmit handler to handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Updating Pokemon Submitted: ", updatedPokemon);
 
     // update the pokemon in the database
     try {
