@@ -15,6 +15,9 @@ interface PokemonCardProps {
 const PokemonCard: FC<PokemonCardProps> = ({ pokemon, type }) => {
   const tempImgUrl =
     "https://i.pinimg.com/550x/95/d5/cd/95d5cded00f3a3e8a98fb1eed568aa9f.jpg";
+
+  //write method to delete the pokemon
+  //reroute to the pokedex page
   return (
     <Card
       className={

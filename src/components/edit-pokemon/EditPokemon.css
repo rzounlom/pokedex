@@ -14,6 +14,25 @@
   width: 100%;
 }
 
+.edit-pokemon .heading {
+  display: flex;
+  align-items: center;
+}
+
+.edit-pokemon .heading svg {
+  color: rgb(112, 112, 112);
+  font-size: 3.5rem;
+  margin-right: 10px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.edit-pokemon .heading svg:hover {
+  color: cyan;
+  cursor: pointer;
+}
+
 .edit-pokemon main form {
   width: 100%;
 }

@@ -91,6 +91,9 @@ const NewPokemon: FC = () => {
     e.preventDefault();
     console.log("New Pokemon Submitted: ", newPokemon);
     // You can add further logic to send the data to a server here
+    //add pokemon to db
+    //send toast message
+    //reroute to the pokedex page
   };
 
   return (

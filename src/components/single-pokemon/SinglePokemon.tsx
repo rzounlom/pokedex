@@ -1,21 +1,37 @@
 import "./SinglePokemon.css";
 
 import { Badge, Button, Container } from "react-bootstrap";
+import { FC, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { FC } from "react";
+import DeletePokemonModal from "../delete-pokemon/DeletePokemonModal";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { determineBadgeColor } from "../../utils/determineBadgeColor";
 import { pokemon } from "../../../db/db.json";
 
 const SinglePokemon: FC = () => {
   const { id } = useParams<{ id: string }>();
+  const [show, setShow] = useState(false);
+  const onClose = () => setShow(false);
+
+  const deletePokemon = () => {
+    //delete the pokemon
+    //send toast message
+    //reroute to the pokedex page
+    console.log("delete", id);
+    onClose();
+  };
 
   //find the pokemon with the id
   const foundPokemon = pokemon.find((p) => p.id === id);
 
   return (
     <Container className="single-pokemon page">
+      <DeletePokemonModal
+        onClose={onClose}
+        show={show}
+        deletePokemon={deletePokemon}
+      />
       <div className="heading">
         <Link to="/us/pokedex">
           <IoArrowBackCircleOutline />
@@ -83,9 +99,9 @@ const SinglePokemon: FC = () => {
           <Link to={`/us/pokedex/edit/${foundPokemon?.id}`}>
             <Button variant="outline-primary">Edit</Button>
           </Link>
-          <Link to="/us/pokedex">
-            <Button variant="outline-danger">Delete</Button>
-          </Link>
+          <Button variant="outline-danger" onClick={() => setShow(true)}>
+            Delete
+          </Button>
         </div>
       </div>
     </Container>

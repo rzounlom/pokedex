@@ -137,7 +137,8 @@
   justify-content: space-around;
 }
 
-.single-pokemon .info-container .action-btn a {
+.single-pokemon .info-container .action-btn a,
+.single-pokemon .info-container .action-btn button {
   width: 45%;
 }
 

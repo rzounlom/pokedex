@@ -1,12 +1,13 @@
 import "./EditPokemon.css";
 
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
 import React, { FC, useState } from "react";
 
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 import PokemonCard from "../pokemon-card/PokemonCard";
 import { pokemon } from "../../../db/db.json";
 import { pokemonTypes } from "../../data";
-import { useParams } from "react-router-dom";
 
 const EditPokemon: FC = () => {
   //find the pokemon by id
@@ -100,13 +101,18 @@ const EditPokemon: FC = () => {
     console.log("Updating Pokemon Submitted: ", newPokemon);
 
     // update the pokemon in the database
-
+    //send toast message
     // redirect to the pokemon details page
   };
 
   return (
     <Container className="edit-pokemon page">
-      <h2>Edit Pokémon</h2>
+      <div className="heading">
+        <Link to={`/us/pokedex/${id}`}>
+          <IoArrowBackCircleOutline />
+        </Link>
+        <h2>Edit Pokémon</h2>
+      </div>
       {/* Bootstrap Form */}
       <main>
         <Form onSubmit={handleSubmit}>
