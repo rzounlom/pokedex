@@ -10,3 +10,5 @@ export interface Pokemon {
   abilities: string;
   img: string;
 }
+
+export type NewPokemon = Omit<Pokemon, "id">;
