@@ -17,7 +17,7 @@ const EditPokemon: FC = () => {
 
   console.log({ id, pokemon, foundPokemon });
   // State to manage the form data
-  const [newPokemon, setNewPokemon] = useState({
+  const [updatedPokemon, setupdatedPokemon] = useState({
     name: foundPokemon?.name || "",
     img: foundPokemon?.img || "",
     description: foundPokemon?.description || "",
@@ -35,40 +35,40 @@ const EditPokemon: FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setNewPokemon({
-      ...newPokemon,
+    setupdatedPokemon({
+      ...updatedPokemon,
       [name]: value,
     });
   };
 
   const handleWeaknessChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
-    const isWithinArray = newPokemon.weaknesses.includes(value);
+    const isWithinArray = updatedPokemon.weaknesses.includes(value);
     if (checked && !isWithinArray) {
-      setNewPokemon({
-        ...newPokemon,
-        weaknesses: [...newPokemon.weaknesses, value],
+      setupdatedPokemon({
+        ...updatedPokemon,
+        weaknesses: [...updatedPokemon.weaknesses, value],
       });
     } else {
-      setNewPokemon({
-        ...newPokemon,
-        weaknesses: newPokemon.weaknesses.filter((item) => item !== value),
+      setupdatedPokemon({
+        ...updatedPokemon,
+        weaknesses: updatedPokemon.weaknesses.filter((item) => item !== value),
       });
     }
   };
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
-    const isWithinArray = newPokemon.type.includes(value);
+    const isWithinArray = updatedPokemon.type.includes(value);
     if (checked && !isWithinArray) {
-      setNewPokemon({
-        ...newPokemon,
-        type: [...newPokemon.type, value],
+      setupdatedPokemon({
+        ...updatedPokemon,
+        type: [...updatedPokemon.type, value],
       });
     } else {
-      setNewPokemon({
-        ...newPokemon,
-        type: newPokemon.type.filter((item) => item !== value),
+      setupdatedPokemon({
+        ...updatedPokemon,
+        type: updatedPokemon.type.filter((item) => item !== value),
       });
     }
   };
@@ -78,17 +78,17 @@ const EditPokemon: FC = () => {
   //   (field: "type" | "weaknesses") =>
   //   (e: React.ChangeEvent<HTMLInputElement>) => {
   //     const { value, checked } = e.target;
-  //     const isWithinArray = newPokemon[field].includes(value);
+  //     const isWithinArray = updatedPokemon[field].includes(value);
 
   //     if (checked && !isWithinArray) {
-  //       setNewPokemon({
-  //         ...newPokemon,
-  //         [field]: [...newPokemon[field], value],
+  //       setupdatedPokemon({
+  //         ...updatedPokemon,
+  //         [field]: [...updatedPokemon[field], value],
   //       });
   //     } else {
-  //       setNewPokemon({
-  //         ...newPokemon,
-  //         [field]: newPokemon[field].filter((item) => item !== value),
+  //       setupdatedPokemon({
+  //         ...updatedPokemon,
+  //         [field]: updatedPokemon[field].filter((item) => item !== value),
   //       });
   //     }
   //   };
@@ -98,7 +98,7 @@ const EditPokemon: FC = () => {
   // onSubmit handler to handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Updating Pokemon Submitted: ", newPokemon);
+    console.log("Updating Pokemon Submitted: ", updatedPokemon);
 
     // update the pokemon in the database
     //send toast message
@@ -125,7 +125,7 @@ const EditPokemon: FC = () => {
                   type="text"
                   placeholder="Enter Pokémon Name"
                   name="name"
-                  value={newPokemon.name}
+                  value={updatedPokemon.name}
                   onChange={handleChange}
                   required
                 />
@@ -140,7 +140,7 @@ const EditPokemon: FC = () => {
                   type="text"
                   placeholder="Enter Image URL"
                   name="img"
-                  value={newPokemon.img}
+                  value={updatedPokemon.img}
                   onChange={handleChange}
                   required
                 />
@@ -156,7 +156,7 @@ const EditPokemon: FC = () => {
               rows={3}
               placeholder="Enter a short description"
               name="description"
-              value={newPokemon.description}
+              value={updatedPokemon.description}
               onChange={handleChange}
               required
             />
@@ -171,7 +171,7 @@ const EditPokemon: FC = () => {
                   type="text"
                   placeholder="Enter Height in Feet"
                   name="heightFt"
-                  value={newPokemon.heightFt}
+                  value={updatedPokemon.heightFt}
                   onChange={handleChange}
                   required
                 />
@@ -185,7 +185,7 @@ const EditPokemon: FC = () => {
                   type="text"
                   placeholder="Enter Height in Inches"
                   name="heightIn"
-                  value={newPokemon.heightIn}
+                  value={updatedPokemon.heightIn}
                   onChange={handleChange}
                   required
                 />
@@ -200,7 +200,7 @@ const EditPokemon: FC = () => {
               type="text"
               placeholder="Enter Weight"
               name="weight"
-              value={newPokemon.weight}
+              value={updatedPokemon.weight}
               onChange={handleChange}
               required
             />
@@ -213,7 +213,7 @@ const EditPokemon: FC = () => {
               type="text"
               placeholder="Enter Pokémon Category"
               name="category"
-              value={newPokemon.category}
+              value={updatedPokemon.category}
               onChange={handleChange}
               required
             />
@@ -226,7 +226,7 @@ const EditPokemon: FC = () => {
               type="text"
               placeholder="Enter Abilities"
               name="abilities"
-              value={newPokemon.abilities}
+              value={updatedPokemon.abilities}
               onChange={handleChange}
               required
             />
@@ -245,7 +245,7 @@ const EditPokemon: FC = () => {
                   id={type.toLowerCase()}
                   name="types"
                   value={type}
-                  checked={newPokemon.type.includes(type)}
+                  checked={updatedPokemon.type.includes(type)}
                   onChange={handleTypeChange}
                 />
               ))}
@@ -266,7 +266,7 @@ const EditPokemon: FC = () => {
                   id={type.toLowerCase()}
                   name="weaknesses"
                   value={type}
-                  checked={newPokemon.weaknesses.includes(type)}
+                  checked={updatedPokemon.weaknesses.includes(type)}
                   onChange={handleWeaknessChange}
                 />
               ))}
@@ -285,8 +285,8 @@ const EditPokemon: FC = () => {
               <PokemonCard
                 type="edit"
                 pokemon={{
-                  ...newPokemon,
-                  height: `${newPokemon.heightFt}' ${newPokemon.heightIn}"`,
+                  ...updatedPokemon,
+                  height: `${updatedPokemon.heightFt}' ${updatedPokemon.heightIn}"`,
                 }}
               />
             </Col>
