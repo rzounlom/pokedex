@@ -28,7 +28,7 @@ nav ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 250px;
+  width: 200px;
 }
 
 nav ul li {
@@ -85,7 +85,7 @@ nav ul li svg {
   }
 
   nav ul {
-    width: 400px;
+    width: 300px;
   }
 
   nav ul li {
